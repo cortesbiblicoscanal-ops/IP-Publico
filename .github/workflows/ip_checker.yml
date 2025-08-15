@@ -2,7 +2,7 @@
 name: Checagem de IP Público
 
 # O evento que dispara o workflow.
-# A expressão cron '*/10 * * * *' significa "executar a cada 10 minutos".
+# A express\u00E3o cron '*/10 * * * *' significa "executar a cada 10 minutos".
 # O evento 'workflow_dispatch' permite a execu\u00E7\u00E3o manual.
 on:
   schedule:
@@ -33,6 +33,6 @@ jobs:
         run: pip install requests
 
       # Executa seu script Python usando o caminho completo a partir da raiz do reposit\u00F3rio
-      # O nome do arquivo foi corrigido de ip_getter.py para ip.py
+      # O nome da pasta "meu ip" foi corrigido e colocado entre aspas para evitar problemas com o espa\u00E7o.
       - name: Executar bot de IP
-        run: python IP-Publico/ip.py
+        run: python "meu ip"/ip.py
