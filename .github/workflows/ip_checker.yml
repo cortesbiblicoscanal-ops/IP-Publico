@@ -1,0 +1,36 @@
+# Define o nome do seu workflow
+name: Checagem de IP Público
+
+# O evento que dispara o workflow.
+# A expressão cron '*/10 * * * *' significa "executar a cada 10 minutos".
+# (minuto hora dia_do_mês mês dia_da_semana)
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+# Os "trabalhos" (jobs) que serão executados pelo workflow
+jobs:
+  build:
+    # O tipo de sistema operacional que será usado para o trabalho
+    runs-on: ubuntu-latest
+
+    # Os passos do trabalho
+    steps:
+      # Pega o código do seu repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # Configura o ambiente Python
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # Use a versão mais recente do Python 3
+
+      # Instala as dependências do seu script (a biblioteca requests)
+      - name: Instalar dependências
+        run: pip install requests
+
+      # Executa seu script Python
+      # Certifique-se de que o nome do arquivo abaixo corresponda ao nome do seu arquivo Python
+      - name: Executar bot de IP
+        run: python ip_getter.py
