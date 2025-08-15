@@ -3,10 +3,12 @@ name: Checagem de IP Público
 
 # O evento que dispara o workflow.
 # A expressão cron '*/10 * * * *' significa "executar a cada 10 minutos".
-# (minuto hora dia_do_mês mês dia_da_semana)
+# O evento 'workflow_dispatch' permite a execução manual.
 on:
   schedule:
     - cron: '*/10 * * * *'
+  # Adicione esta linha para permitir a execução manual a partir da interface do GitHub
+  workflow_dispatch:
 
 # Os "trabalhos" (jobs) que serão executados pelo workflow
 jobs:
@@ -17,17 +19,17 @@ jobs:
     # Os passos do trabalho
     steps:
       # Pega o código do seu repositório
-      - name: Checkout do código
+      - name: Checkout do c\u00F3digo
         uses: actions/checkout@v4
 
       # Configura o ambiente Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x' # Use a versão mais recente do Python 3
+          python-version: '3.x' # Use a vers\u00E3o mais recente do Python 3
 
-      # Instala as dependências do seu script (a biblioteca requests)
-      - name: Instalar dependências
+      # Instala as depend\u00EAncias do seu script (a biblioteca requests)
+      - name: Instalar depend\u00EAncias
         run: pip install requests
 
       # Executa seu script Python
