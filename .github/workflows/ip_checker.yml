@@ -3,22 +3,22 @@ name: Checagem de IP Público
 
 # O evento que dispara o workflow.
 # A expressão cron '*/10 * * * *' significa "executar a cada 10 minutos".
-# O evento 'workflow_dispatch' permite a execução manual.
+# O evento 'workflow_dispatch' permite a execu\u00E7\u00E3o manual.
 on:
   schedule:
     - cron: '*/10 * * * *'
-  # Adicione esta linha para permitir a execução manual a partir da interface do GitHub
+  # Adicione esta linha para permitir a execu\u00E7\u00E3o manual a partir da interface do GitHub
   workflow_dispatch:
 
-# Os "trabalhos" (jobs) que serão executados pelo workflow
+# Os "trabalhos" (jobs) que ser\u00E3o executados pelo workflow
 jobs:
   build:
-    # O tipo de sistema operacional que será usado para o trabalho
+    # O tipo de sistema operacional que ser\u00E1 usado para o trabalho
     runs-on: ubuntu-latest
 
     # Os passos do trabalho
     steps:
-      # Pega o código do seu repositório
+      # Pega o c\u00F3digo do seu reposit\u00F3rio
       - name: Checkout do c\u00F3digo
         uses: actions/checkout@v4
 
@@ -32,7 +32,9 @@ jobs:
       - name: Instalar depend\u00EAncias
         run: pip install requests
 
-      # Executa seu script Python
-      # O caminho do arquivo foi corrigido para a raiz do reposit\u00F3rio
+      # Executa seu script Python na pasta correta
+      # A linha "cd IP-Publico" garante que o script seja encontrado
       - name: Executar bot de IP
-        run: python ip_getter.py
+        run: |
+          cd IP-Publico
+          python ip_getter.py
