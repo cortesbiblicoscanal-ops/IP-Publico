@@ -32,9 +32,7 @@ jobs:
       - name: Instalar depend\u00EAncias
         run: pip install requests
 
-      # Executa seu script Python na pasta correta
-      # A linha "cd IP-Publico" garante que o script seja encontrado
+      # Executa seu script Python usando o caminho completo a partir da raiz do reposit\u00F3rio
+      # O nome do arquivo foi corrigido de ip_getter.py para ip.py
       - name: Executar bot de IP
-        run: |
-          cd IP-Publico
-          python ip_getter.py
+        run: python IP-Publico/ip.py
