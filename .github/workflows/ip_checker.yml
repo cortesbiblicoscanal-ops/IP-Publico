@@ -36,6 +36,9 @@ jobs:
       - name: Instalar depend\u00EAncias
         run: pip install selenium undetected-chromedriver
 
-      # Executa seu script Python usando o caminho correto a partir da raiz do reposit\u00F3rio
+      # Navega para a pasta do bot e o executa
+      # O caminho foi corrigido para 'meu ip'
       - name: Executar bot da Twitch
-        run: python "meu ip"/"meu ip".py
+        run: |
+          cd "meu ip"
+          python "meu ip.py"
