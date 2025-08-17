@@ -17,7 +17,7 @@ def run_twitch_viewer_bot():
     # --- Configura\u00E7\u00F5es do Chrome para rodar em modo headless ---
     # O modo headless permite que o bot execute sem abrir uma janela do navegador.
     options = webdriver.ChromeOptions()
-    #options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-blink-features=AutomationControlled")
@@ -72,3 +72,4 @@ def run_twitch_viewer_bot():
 # --- Executa a fun\u00E7\u00E3o principal do bot ---
 if __name__ == "__main__":
     run_twitch_viewer_bot()
+
