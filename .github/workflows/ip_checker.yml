@@ -1,13 +1,10 @@
 # Define o nome do seu workflow
-name: Checagem de IP Público
+name: Bot da Twitch
 
 # O evento que dispara o workflow.
-# A express\u00E3o cron '0 0 * * *' significa "executar uma vez por dia, \u00E0 meia-noite (UTC)".
-# O evento 'workflow_dispatch' permite a execu\u00E7\u00E3o manual.
 on:
   schedule:
     - cron: '0 0 * * *'
-  # Adicione esta linha para permitir a execu\u00E7\u00E3o manual a partir da interface do GitHub
   workflow_dispatch:
 
 # Os "trabalhos" (jobs) que ser\u00E3o executados pelo workflow
@@ -21,18 +18,24 @@ jobs:
       # Pega o c\u00F3digo do seu reposit\u00F3rio
       - name: Checkout do c\u00F3digo
         uses: actions/checkout@v4
+      
+      # Instala o Google Chrome e o driver correspondente, o que \u00E9 necess\u00E1rio para o Selenium
+      - name: Configurar Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          # Vers\u00E3o est\u00E1vel do Chrome
+          chrome-version: 'stable'
 
       # Configura o ambiente Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x' # Use a vers\u00E3o mais recente do Python 3
+          python-version: '3.x'
 
-      # Instala as depend\u00EAncias do seu script (a biblioteca requests)
+      # Instala as depend\u00EAncias do seu script (Selenium e undetected_chromedriver)
       - name: Instalar depend\u00EAncias
-        run: pip install requests
+        run: pip install selenium undetected-chromedriver
 
       # Executa seu script Python usando o caminho completo a partir da raiz do reposit\u00F3rio
-      # O nome da pasta "meu ip" foi corrigido e colocado entre aspas para evitar problemas com o espa\u00E7o.
-      - name: Executar bot de IP
-        run: python "meu ip"/ip.py
+      - name: Executar bot da Twitch
+        run: python "meu ip"/"meu ip".py
